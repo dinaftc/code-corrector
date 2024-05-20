@@ -1,5 +1,6 @@
 <template>
-    <codemirror
+  <div class="flex flex-col w-full h-full">
+    <codemirror 
       v-model="code"
       placeholder="Code goes here..."
       :style="{ height: '400px' }"
@@ -11,8 +12,12 @@
       @change="log('change', $event)"
       @focus="log('focus', $event)"
       @blur="log('blur', $event)"
+      class="w-full"
     />
-  </template>
+   <button class=" btn btn-primary my-8">Correct program</button>
+  </div>
+</template>
+
   
   <script>
     import { defineComponent, ref, shallowRef } from 'vue'

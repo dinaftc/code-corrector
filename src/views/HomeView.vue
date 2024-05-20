@@ -8,7 +8,7 @@
         <home-page />
     
     </div>
-    <div class="editor-section flex justify-center items-center flex-col">
+    <div id="text-editor" class="editor-section flex justify-center items-center flex-col">
       <h1 class="text-4xl md:text-6xl font-bold mb-10 text-white ">
         Write down your code here
       </h1>

@@ -35,6 +35,7 @@ module.exports = {
           background: '#0d0d0d', // Dark background
           buttonPrimary: '#4a00ff', // Button purple
           buttonSecondary: '#1a1a1a', // Button dark
+          editorbg:'#060521'
         }
       }
     ]
