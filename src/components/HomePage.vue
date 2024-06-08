@@ -7,8 +7,10 @@
       Code corrector and assistant,  designed to help you improve your Python coding skills with ease and efficiency. With automatic error detection and correction, code optimization suggestions, and real-time feedback and guidance, you can write better Python code faster and with more confidence.
     </p>
     <div class="flex justify-center space-x-4">
-      <a href="#text-editor" class="bg-primary text-white text-lg px-6 py-3 rounded-md hover:bg-primary-dark transition-colors duration-300">Try it now</a>
-    </div>
+      <router-link :to="{ name: 'text-editor' }" class="bg-primary text-white text-lg px-6 py-3 rounded-md hover:bg-primary-dark transition-colors duration-300">
+        Try it now
+      </router-link>
+       </div>
   </header>
 </template>
 
