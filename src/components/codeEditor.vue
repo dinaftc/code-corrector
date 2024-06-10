@@ -14,17 +14,16 @@
       @focus="log('focus', $event)"
       @blur="log('blur', $event)"
     />
-    <div class="w-full flex flex-wrap gap-2 p-2 items-center justify-center">
-      <select v-model="selectedInstruction" class="px-4 py-4 my-2 mx-4 border-secondary text-secondary border rounded-md bg-codemirror-bg">
-        <option v-for="instruction in instructions" :key="instruction" :value="instruction">{{ instruction }}</option>
-      </select>
-      <input v-model="wronginstruction" placeholder="Wrong instruction" class="px-4 py-4 my-2 mx-4 border-secondary text-secondary border rounded-md bg-codemirror-bg placeholder-secondary" />
-      <select v-model="lineNumber" class="px-4 py-4 my-2 mx-4 border-secondary text-secondary border rounded-md bg-codemirror-bg">
-        <option v-for="line in lines" :key="line" :value="line">{{ line }}</option>
-      </select>
+    <div class="w-full flex flex-col gap-2 py-2 items-start mx-1">
+      <label class="text-md text-secondary">Line Number</label>
+      <input 
+        v-model="lineNumber" 
+        @input="checkLineForInstruction" 
+        placeholder="Line number" 
+        class="px-4 py-4 border border-gray-300 rounded-md text-secondary bg-codemirror-bg"
+      />
     </div>
     <button class="btn btn-primary my-8" @click="correctTheProgram">Correct program</button>
-    
   </div>
 </template>
 
@@ -50,8 +49,8 @@ const wronginstruction = ref('')
 const extensions = [javascript(), coolGlow]
 const instructions = ref(["Instruction Type", "Affectation", "Condition", "Logique"])
 const selectedInstruction = ref(instructions.value[0])
-const lines = ref(["line number", "6", "7", "8", "9", "10"])
-const lineNumber = ref("line number")
+
+const lineNumber = ref("")
 const PredictedResults = ref(null)
 
 const view = shallowRef()
@@ -61,11 +60,28 @@ const handleReady = payload => {
 
 const log = console.log
 
+const checkLineForInstruction = () => {
+  const lines = codeToPredict.value.split('\n');
+  const lineIndex = parseInt(lineNumber.value) - 1;
+
+  if (lineIndex >= 0 && lineIndex < lines.length) {
+    const line = lines[lineIndex].trim();
+
+    if (line.startsWith('if') || line.includes(' if ') || line.startsWith('while') || line.includes(' while')) {
+      selectedInstruction.value = 'Condition';
+    } else if (line.includes('=')) {
+      selectedInstruction.value = 'Affectation';
+    } else {
+      selectedInstruction.value = 'Instruction Type'; // Default or other type
+    }
+  }
+};
+
 const correctTheProgram = async () => {
   usePrediction.codeToPredict = codeToPredict.value
   usePrediction.lineNumber = lineNumber.value
-  usePrediction.wronginstruction  = wronginstruction.value
 
+  usePrediction.InstructionType = selectedInstruction.value
   try {
     await usePrediction.correctProgram()
     if (usePrediction.PredictedResults) {

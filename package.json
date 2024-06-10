@@ -15,6 +15,7 @@
     "@codemirror/lang-javascript": "^6.2.2",
     "@codemirror/state": "6.x",
     "@codemirror/theme-one-dark": "^6.1.2",
+    "@duskmoon/vue3-typed-js": "^0.0.4",
     "codemirror": "^6.0.1",
     "file-saver": "^2.0.5",
     "fs": "^0.0.1-security",
@@ -23,7 +24,8 @@
     "thememirror": "^2.0.1",
     "vue": "^3.4.21",
     "vue-codemirror": "^6.1.1",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue-typed-js": "^0.1.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",

@@ -11,19 +11,19 @@
       </div>
   
       <!-- Main Content -->
-      <div id="text-editor" v-else class="editor-section flex-grow flex flex-col items-center justify-center  text-white p-4">
-        <h1 class="text-2xl md:text-4xl font-bold mb-10">Results</h1>
+      <div id="text-editor" v-else class="editor-section flex-grow flex flex-col items-center justify-center  text-white px-4 pb-4">
+        <h1 class="text-5xl md:text-5xl font-bold mb-10">Results</h1>
   
         <div class="w-full h-full flex flex-col lg:flex-row gap-4 px-4">
   
           <!-- Code Editor Section -->
-          <div class="w-full lg:w-1/2 flex flex-col items-center">
+          <div class="{{ usePrediction.erroring ? 'w-full' : 'w-full lg:w-1/2' }} flex flex-col items-center">
             <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
               Correct Program:
             </h3>
             <Codemirror
               :style="{ height: '500px', width: '100%' }"
-              v-model="usePrediction.PredictedResults.new_program"
+              v-model="usePrediction.PredictedResults.new_program  "
               class="w-full placeholder-secondary"
               :autofocus="true"
               :indent-with-tab="true"
@@ -37,7 +37,7 @@
           </div>
   
           <!-- Statistics Section -->
-          <div class="w-full lg:w-1/2 flex flex-col items-center">
+          <div class="w-full lg:w-1/2 flex flex-col items-center" v-if="usePrediction.erroring">
             <h3 class="text-3xl font-bold  bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
                 Statistics:
               </h3>
@@ -48,12 +48,9 @@
             </div>
             <div class="w-full flex flex-col my-4 items-center">
               <h3 class="text-2xl mb-1 text-[#2962ff]">Elapsed Time:</h3>
-              <pre class="text-2xl ">{{usePrediction.PredictedResults.elapsed_time}}</pre>
+              <pre class="text-2xl ">{{usePrediction.PredictedResults.elapsed_time.toFixed(2)}} seconds</pre>
             </div>
-            <div class="w-full flex flex-col my-4 items-center">
-                <h3 class="text-2xl mb-1 text-[#2962ff]">Generation:</h3>
-                <pre class="text-2xl ">{{usePrediction.PredictedResults.generation}}</pre>
-              </div></div>
+            </div>
             
           </div>
           
@@ -75,7 +72,7 @@
   
   const PredictedResults = ref({})
   const view = shallowRef(null)
-  
+  const ErrorExpression = ref('No solution found within the time limit')
   const handleReady = payload => {
     view.value = payload.view
   }

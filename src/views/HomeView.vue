@@ -8,14 +8,7 @@
         <home-page />
     
     </div>
-    <div id="text-editor" class="editor-section flex justify-center items-center flex-col">
-      <h1 class="text-4xl md:text-6xl font-bold mb-10 text-white ">
-        Write down your code here
-      </h1>
-      <div class="editor-container " ref="editorContainer">
-        <code-editor />
-      </div>
-    </div>
+    
   </div>
 </template>
 
@@ -63,7 +56,7 @@ onBeforeUnmount(() => {
   align-items: center;
   z-index: 1;
   width: 100%;
-  margin-top: 190px;
+  margin-top: 50px;
 }
 
 .editor-section {
