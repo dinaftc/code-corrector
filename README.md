@@ -1,10 +1,14 @@
-# front
+# Genetic Programming for python Code Correction Frontend made using Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+This project uses genetic algorithms and meta heuristic approaches for python code correction.
 
-## Recommended IDE Setup
+## Screenshots
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+
+![Screenshot 5](https://github.com/dinaftc/project_2cs/raw/main/Screenshot%202024-06-10%20024553.png)
+![Screenshot 6](https://github.com/dinaftc/project_2cs/raw/main/Screenshot%202024-06-10%20024615.png)
+![Screenshot 7](https://github.com/dinaftc/project_2cs/raw/main/Screenshot%202024-06-10%20024722.png)
+![Screenshot 8](https://github.com/dinaftc/project_2cs/raw/main/Screenshot%202024-06-10%20024740.png)
 
 ## Customize configuration
 
